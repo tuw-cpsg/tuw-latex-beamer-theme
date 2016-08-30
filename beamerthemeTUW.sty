@@ -1,0 +1,107 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerthemeVienna}[2010/02/17 Beamer template that fits the TU Wien corporate identity]
+\RequirePackage{graphicx}
+
+\def\beamer@viennaPlain{plain}
+\def\beamer@viennaSidebar{sidebar}
+\def\beamer@viennaHelvetica{helvetica}
+
+\DeclareOptionBeamer{font}{\def\beamer@viennaFont{#1}}
+\DeclareOptionBeamer{outer}{\def\beamer@viennaOuter{#1}}
+\ExecuteOptionsBeamer{outer=plain}
+\ProcessOptionsBeamer
+
+\ifx\beamer@viennaFont\beamer@viennaHelvetica
+\RequirePackage{helvet}
+\else
+\RequirePackage{din}
+\RequirePackage{frutiger}
+\fi
+
+\definecolor{TUblue}{rgb}{.0547,.4219,.6914}
+\def\TUblue{TUblue}
+\def\TUlightblue{TUblue!20!white}
+\def\TUmediumblue{TUblue!45!white}
+\def\TUdarkblue{TUblue!70!black}
+\def\alertred{red!50!black}
+
+\mode<presentation>
+
+\setbeamercovered{transparent}
+\beamertemplatenavigationsymbolsempty
+
+\ifx\beamer@viennaFont\beamer@viennaHelvetica
+\setbeamerfont{title}{series*=b}
+\setbeamerfont{frametitle}{series*=b}
+\setbeamerfont{headline}{series*=b,size=\scriptsize}
+\setbeamerfont{footline}{series*=b,size=\scriptsize}
+\setbeamerfont{sidebar}{series*=b}
+\else
+\setbeamerfont{title}{family*=din}
+\setbeamerfont{frametitle}{family*=din}
+\setbeamerfont{headline}{family*=din,size=\scriptsize}
+\setbeamerfont{footline}{family*=din,size=\scriptsize}
+\setbeamerfont{sidebar}{family*=din}
+\fi
+
+\setbeamerfont{section in sidebar}{size=\scriptsize}
+\setbeamerfont{subsection in sidebar}{size=\tiny}
+\setbeamerfont{section in toc}{parent=normal text}
+\setbeamerfont{subsection in toc}{parent=section in toc}
+
+\setbeamercolor{normal text}{fg=black,bg=white}
+\setbeamercolor{alerted text}{fg=\alertred}
+\setbeamercolor{structure}{fg=\TUblue}
+\setbeamercolor{title}{fg=gray}
+\setbeamercolor{frametitle}{fg=gray}
+
+\setbeamercolor{palette primary}{fg=\TUdarkblue,bg=\TUlightblue}
+\setbeamercolor{palette secondary}{fg=\TUblue!50!black,bg=\TUmediumblue}
+\setbeamercolor{palette tertiary}{fg=white,bg=\TUblue}
+
+\setbeamercolor{section in toc}{parent=normal text}
+\setbeamercolor{subsection in toc}{parent=section in toc}
+
+\setbeamercolor{block title}{fg=white, bg=\TUblue}
+\setbeamercolor{block title example}{fg=white, bg=\TUblue}
+\setbeamercolor{block title alerted}{fg=white, bg=\alertred}
+\setbeamercolor{block body}{bg=\TUlightblue}
+\setbeamercolor{block body example}{parent=block body}
+\setbeamercolor{block body alerted}{parent=block body, fg=\alertred}
+
+\setbeamercolor{headline}{fg=gray}
+\setbeamercolor{footline}{fg=gray}
+\setbeamercolor{title in head/foot}{fg=white,bg=\TUdarkblue}
+\setbeamercolor{page number in head/foot}{fg=gray}
+
+\setbeamercolor{sidebar}{bg=\TUblue,fg=white}
+\setbeamercolor{palette sidebar primary}{fg=\TUdarkblue,bg=\TUlightblue}
+\setbeamercolor{palette sidebar secondary}{fg=\TUdarkblue,bg=\TUlightblue}
+\setbeamercolor{palette sidebar tertiary}{fg=white}
+\setbeamercolor{title in sidebar}{fg=white}
+\setbeamercolor{section in sidebar}{fg=\TUdarkblue}
+\setbeamercolor{section in sidebar shaded}{fg=white}
+\setbeamercolor{subsection in sidebar}{fg=\TUdarkblue}
+\setbeamercolor{subsection in sidebar shaded}{fg=white}
+
+\setbeamertemplate{section in toc}[square]
+\setbeamertemplate{subsection in toc}[square]
+
+\setbeamertemplate{blocks}[rounded]
+\pgfdeclareverticalshading{bmb@transition}{\the\paperwidth}
+{color(0pt)=(\TUlightblue); color(3.0pt)=(\TUlightblue)}
+
+\ifx\beamer@viennaOuter\beamer@viennaPlain
+\setbeamertemplate{footline}[page number]
+\else\ifx\beamer@viennaOuter\beamer@viennaSidebar
+\useoutertheme[height=0pt]{\beamer@viennaOuter}
+\else
+\useoutertheme{\beamer@viennaOuter}
+\fi\fi
+
+\hypersetup{colorlinks=true,linkcolor=fg,urlcolor=\TUblue}
+
+\newcommand{\TUlogo}[1]{\includegraphics[#1]{TULogo_CMYK}}
+
+\mode
+<all>

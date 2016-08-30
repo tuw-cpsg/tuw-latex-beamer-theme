@@ -1,0 +1,12 @@
+*~
+*.bak
+*#
+
+# Latex
+*.aux
+*.log
+*.nav
+*.out
+*.pdf
+*.snm
+*.toc
