@@ -2,6 +2,7 @@
 \ProvidesPackage{beamerthemeTUW}[2016/08/30 Beamer template that fits the TU Wien corporate design (adopted styles from powerpoint presentation template)]
 
 \RequirePackage{graphicx}
+\RequirePackage{tikz}
 
 \def\beamer@viennaPlain{plain}
 \def\beamer@viennaSidebar{sidebar}
@@ -24,11 +25,6 @@
 \setbeamercovered{transparent}
 \beamertemplatenavigationsymbolsempty
 
-%
-% 4:3 layout (aspectratio by default)
-% 10" x 7.5"
-%
-
 %%% colors
 \definecolor{TUWblue}{RGB}{0,102,153}
 \definecolor{TUWgray}{RGB}{102,102,102}
@@ -42,13 +38,7 @@
 \def\TUWdarkblue{TUWblue!70!black}
 \def\alertred{red!50!black}
 
-% title page
-\setbeamercolor{title}{fg=white}
-\setbeamercolor{background titlepage}{bg=white}
-
 % content page
-%\setbeamercolor{background canvas}{bg=\IceBlue}
-
 \setbeamercolor{normal text}{fg=black,bg=white}
 \setbeamercolor{alerted text}{fg=\alertred}
 \setbeamercolor{structure}{fg=\TUWblue}
@@ -104,7 +94,29 @@
 \setbeamerfont{section in toc}{parent=normal text}
 \setbeamerfont{subsection in toc}{parent=section in toc}
 
-%%% inner and outer
+%%% outer
+
+\setbeamersize{text margin left=0.09\paperwidth}
+\setbeamersize{text margin right=0.12\paperwidth}
+
+% background
+\setbeamertemplate{background}{
+  \begin{tikzpicture}
+    \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
+    % title page
+    \fill[white] (0,0) rectangle (\the\paperwidth,\the\paperheight);
+    \fill[\TUWblue, rounded corners=0.5cm] (-1cm,-1cm) rectangle (0.965\paperwidth,0.68\paperheight);
+    \node[anchor=south west] (logo) at (0.02\paperwidth,0.76\paperheight) {\includegraphics[width=0.4\paperwidth]{TU_Logo}};
+    % content page
+    \ifnum\thepage>1\relax%
+    \fill[\IceBlue] (0,0) rectangle (\the\paperwidth,\the\paperheight);
+    \fill[white, rounded corners=0.5cm] (-1cm,-1cm) rectangle(0.97\paperwidth,0.91\paperheight);
+    \node[anchor=south west] (logo) at (0.02\paperwidth,0.915\paperheight) {\includegraphics[width=0.04\paperwidth]{TU_Signet}};
+    \fi
+  \end{tikzpicture}
+}
+
+%%% inner
 \setbeamertemplate{section in toc}[square]
 \setbeamertemplate{subsection in toc}[square]
 
