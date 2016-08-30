@@ -1,5 +1,6 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{beamerthemeVienna}[2010/02/17 Beamer template that fits the TU Wien corporate identity]
+\ProvidesPackage{beamerthemeTUW}[2016/08/30 Beamer template that fits the TU Wien corporate design (adopted styles from powerpoint presentation template)]
+
 \RequirePackage{graphicx}
 
 \def\beamer@viennaPlain{plain}
@@ -18,18 +19,72 @@
 \RequirePackage{frutiger}
 \fi
 
-\definecolor{TUblue}{rgb}{.0547,.4219,.6914}
-\def\TUblue{TUblue}
-\def\TUlightblue{TUblue!20!white}
-\def\TUmediumblue{TUblue!45!white}
-\def\TUdarkblue{TUblue!70!black}
-\def\alertred{red!50!black}
-
 \mode<presentation>
 
 \setbeamercovered{transparent}
 \beamertemplatenavigationsymbolsempty
 
+%
+% 4:3 layout (aspectratio by default)
+% 10" x 7.5"
+%
+
+%%% colors
+\definecolor{TUWblue}{RGB}{0,102,153}
+\definecolor{TUWgray}{RGB}{102,102,102}
+\definecolor{IceBlue}{RGB}{222,231,236}
+
+\def\TUWblue{TUWblue}
+\def\TUWgray{TUWgray}
+\def\IceBlue{IceBlue}
+\def\TUWlightblue{TUWblue!20!white}
+\def\TUWmediumblue{TUWblue!45!white}
+\def\TUWdarkblue{TUWblue!70!black}
+\def\alertred{red!50!black}
+
+% title page
+\setbeamercolor{title}{fg=white}
+\setbeamercolor{background titlepage}{bg=white}
+
+% content page
+%\setbeamercolor{background canvas}{bg=\IceBlue}
+
+\setbeamercolor{normal text}{fg=black,bg=white}
+\setbeamercolor{alerted text}{fg=\alertred}
+\setbeamercolor{structure}{fg=\TUWblue}
+\setbeamercolor{frametitle}{fg=black}
+
+\setbeamercolor{palette primary}{fg=\TUWdarkblue,bg=\TUWlightblue}
+\setbeamercolor{palette secondary}{fg=\TUWblue!50!black,bg=\TUWmediumblue}
+\setbeamercolor{palette tertiary}{fg=white,bg=\TUWblue}
+
+\setbeamercolor{section in toc}{parent=normal text}
+\setbeamercolor{subsection in toc}{parent=section in toc}
+
+\setbeamercolor{block title}{fg=white, bg=\TUWblue}
+\setbeamercolor{block title example}{fg=white, bg=\TUWblue}
+\setbeamercolor{block title alerted}{fg=white, bg=\alertred}
+\setbeamercolor{block body}{bg=\IceBlue}
+\setbeamercolor{block body example}{parent=block body}
+\setbeamercolor{block body alerted}{parent=block body, fg=\alertred}
+
+\setbeamercolor{headline}{fg=black}
+\setbeamercolor{footline}{fg=\TUWblue}
+\setbeamercolor{title in head/foot}{fg=\TUWblue}
+\setbeamercolor{page number in head/foot}{fg=\TUWblue}
+
+% sidebar
+\setbeamercolor{sidebar}{bg=\TUWblue,fg=white}
+\setbeamercolor{palette sidebar primary}{fg=\TUWdarkblue,bg=\TUWlightblue}
+\setbeamercolor{palette sidebar secondary}{fg=\TUWdarkblue,bg=\TUWlightblue}
+\setbeamercolor{palette sidebar tertiary}{fg=white}
+\setbeamercolor{title in sidebar}{fg=white}
+\setbeamercolor{section in sidebar}{fg=\TUWdarkblue}
+\setbeamercolor{section in sidebar shaded}{fg=white}
+\setbeamercolor{subsection in sidebar}{fg=\TUWdarkblue}
+\setbeamercolor{subsection in sidebar shaded}{fg=white}
+
+%%% fonts
 \ifx\beamer@viennaFont\beamer@viennaHelvetica
 \setbeamerfont{title}{series*=b}
 \setbeamerfont{frametitle}{series*=b}
@@ -49,47 +104,12 @@
 \setbeamerfont{section in toc}{parent=normal text}
 \setbeamerfont{subsection in toc}{parent=section in toc}
 
-\setbeamercolor{normal text}{fg=black,bg=white}
-\setbeamercolor{alerted text}{fg=\alertred}
-\setbeamercolor{structure}{fg=\TUblue}
-\setbeamercolor{title}{fg=gray}
-\setbeamercolor{frametitle}{fg=gray}
-
-\setbeamercolor{palette primary}{fg=\TUdarkblue,bg=\TUlightblue}
-\setbeamercolor{palette secondary}{fg=\TUblue!50!black,bg=\TUmediumblue}
-\setbeamercolor{palette tertiary}{fg=white,bg=\TUblue}
-
-\setbeamercolor{section in toc}{parent=normal text}
-\setbeamercolor{subsection in toc}{parent=section in toc}
-
-\setbeamercolor{block title}{fg=white, bg=\TUblue}
-\setbeamercolor{block title example}{fg=white, bg=\TUblue}
-\setbeamercolor{block title alerted}{fg=white, bg=\alertred}
-\setbeamercolor{block body}{bg=\TUlightblue}
-\setbeamercolor{block body example}{parent=block body}
-\setbeamercolor{block body alerted}{parent=block body, fg=\alertred}
-
-\setbeamercolor{headline}{fg=gray}
-\setbeamercolor{footline}{fg=gray}
-\setbeamercolor{title in head/foot}{fg=white,bg=\TUdarkblue}
-\setbeamercolor{page number in head/foot}{fg=gray}
-
-\setbeamercolor{sidebar}{bg=\TUblue,fg=white}
-\setbeamercolor{palette sidebar primary}{fg=\TUdarkblue,bg=\TUlightblue}
-\setbeamercolor{palette sidebar secondary}{fg=\TUdarkblue,bg=\TUlightblue}
-\setbeamercolor{palette sidebar tertiary}{fg=white}
-\setbeamercolor{title in sidebar}{fg=white}
-\setbeamercolor{section in sidebar}{fg=\TUdarkblue}
-\setbeamercolor{section in sidebar shaded}{fg=white}
-\setbeamercolor{subsection in sidebar}{fg=\TUdarkblue}
-\setbeamercolor{subsection in sidebar shaded}{fg=white}
-
+%%% inner and outer
 \setbeamertemplate{section in toc}[square]
 \setbeamertemplate{subsection in toc}[square]
 
 \setbeamertemplate{blocks}[rounded]
-\pgfdeclareverticalshading{bmb@transition}{\the\paperwidth}
-{color(0pt)=(\TUlightblue); color(3.0pt)=(\TUlightblue)}
+\pgfdeclareverticalshading{bmb@transition}{\the\paperwidth}{color(0pt)=(\IceBlue); color(3.0pt)=(\IceBlue)}
 
 \ifx\beamer@viennaOuter\beamer@viennaPlain
 \setbeamertemplate{footline}[page number]
@@ -99,9 +119,6 @@
 \useoutertheme{\beamer@viennaOuter}
 \fi\fi
 
-\hypersetup{colorlinks=true,linkcolor=fg,urlcolor=\TUblue}
+\hypersetup{colorlinks=true,linkcolor=fg,urlcolor=\TUWblue}
 
-\newcommand{\TUlogo}[1]{\includegraphics[#1]{TULogo_CMYK}}
-
-\mode
-<all>
+\mode<all>
