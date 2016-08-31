@@ -7,7 +7,7 @@
 %%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{beamerthemeTUW}[2016/08/30 Beamer template that fits the TU Wien corporate design (adopted styles from powerpoint presentation template)]
+\ProvidesPackage{beamerthemeTUW}[2016/08/30 Beamer template that fits the TU Wien corporate design (adopted styles from powerpoint presentation template in CD manual)]
 
 \RequirePackage{graphicx}
 \RequirePackage{tikz}
@@ -17,19 +17,21 @@
 \def\beamer@viennaHelvetica{helvetica}
 
 %%% options
-% The user may choose helvetica when the TU Wien font is not installed.
+% The user may choose other fonts (TU Wien CD says to use helvetica).
 \DeclareOptionBeamer{font}{\def\beamer@viennaFont{#1}}
-% Another outer theme may be chosen, however it won't fit the CD of TU Wien (in
-% color or style).
+% Another outer theme may be chosen, however it may not fit the TU Wien colors.
 \DeclareOptionBeamer{outer}{\def\beamer@viennaOuter{#1}}
-\ExecuteOptionsBeamer{outer=plain} % default style
+% Print frame title beside the logo to save space.
+%% TODO
+
+% defaults
+\ExecuteOptionsBeamer{outer=plain}
+\ExecuteOptionsBeamer{font=helvetica}
+
 \ProcessOptionsBeamer
 
 \ifx\beamer@viennaFont\beamer@viennaHelvetica
 \RequirePackage{helvet}
-\else
-\RequirePackage{din}
-\RequirePackage{frutiger}
 \fi
 
 \mode<presentation>
@@ -84,7 +86,7 @@
 \setbeamercolor{institute}{fg=white}
 \setbeamercolor{date}{fg=white}
 % content page
-\setbeamercolor{headline}{fg=black}
+% keep defaults (black)
 \else
 % other outer styles (e.g., sidebar)
 % title page
@@ -94,7 +96,9 @@
 \setbeamercolor{institute}{fg=black}
 \setbeamercolor{date}{fg=black}
 % content page
+\setbeamercolor{frametitle}{fg=\TUWgray}
 \setbeamercolor{headline}{fg=\TUWgray}
+\setbeamercolor{footline}{fg=\TUWgray}
 \fi
 
 % sidebar
@@ -110,24 +114,14 @@
 
 %%% fonts
 
-% font family
-\ifx\beamer@viennaFont\beamer@viennaHelvetica
+% font weight
 \setbeamerfont{title}{series*=b}
 \setbeamerfont{author}{series*=m}
 \setbeamerfont{institute}{series*=m}
 \setbeamerfont{date}{series*=m}
 \setbeamerfont{frametitle}{series*=b}
-\setbeamerfont{headline}{series*=b}
-\setbeamerfont{footline}{series*=b}
-\else
-\setbeamerfont{title}{family*=din}
-\setbeamerfont{author}{family*=din}
-\setbeamerfont{institute}{family*=din}
-\setbeamerfont{date}{family*=din}
-\setbeamerfont{frametitle}{family*=din}
-\setbeamerfont{headline}{family*=din}
-\setbeamerfont{footline}{family*=din}
-\fi
+\setbeamerfont{headline}{series*=m}
+\setbeamerfont{footline}{series*=m}
 
 % font size difference of plain and other outer styles
 \ifx\beamer@viennaOuter\beamer@viennaPlain
@@ -136,7 +130,8 @@
 \setbeamerfont{author}{size=\normalsize}
 \setbeamerfont{institute}{size=\normalsize}
 \setbeamerfont{date}{size=\normalsize}
-\setbeamerfont{frametitle}{size=\large}
+\setbeamerfont{frametitle}{size=\Large}
+\setbeamerfont{framesubtitle}{size=\large}
 \setbeamerfont{headline}{size=\scriptsize}
 \setbeamerfont{footline}{size=\scriptsize}
 \else
@@ -148,12 +143,12 @@
 \setbeamerfont{subsection in toc}{parent=section in toc}
 
 %%% outer
-\setbeamersize{text margin left=0.09\paperwidth}
-\setbeamersize{text margin right=0.12\paperwidth}
+\setbeamersize{text margin left=1.2cm}
+\setbeamersize{text margin right=1.5cm}
 \beamertemplatenavigationsymbolsempty
 
 \ifx\beamer@viennaOuter\beamer@viennaPlain
-% plain style - this is the CD of TU Wien
+% plain outher theme - this is the CD of TU Wien
 
 % background
 \setbeamertemplate{background}{
@@ -182,7 +177,7 @@
   \begin{beamercolorbox}[leftskip=1.5cm]{subtitle}
     \usebeamerfont{subtitle}\insertsubtitle%
   \end{beamercolorbox}
-  \vskip 1.3cm%
+  \vskip 1.2cm%
   \begin{beamercolorbox}[leftskip=1.5cm]{author}
     \usebeamerfont{author}\insertauthor%
   \end{beamercolorbox}
@@ -192,18 +187,55 @@
   \vfill
 }
 
-\setbeamertemplate{footline}[page number]
+% frametitle
+\setbeamertemplate{frametitle}
+{%
+  \vskip 1.2cm%
+  \begin{beamercolorbox}[leftskip=0cm]{frametitle}
+    \usebeamerfont{frametitle}\insertframetitle%
+    \vskip 0.2cm%
+    \usebeamerfont{framesubtitle}\insertframesubtitle%
+  \end{beamercolorbox}
+}
+
+% footline
+\setbeamertemplate{footline}{%
+  \ifnum\thepage>1
+  \vspace{-1cm}
+  \begin{beamercolorbox}{footline}
+    \hskip 1.2cm%
+    \usebeamerfont{footline}\insertshortdate%
+    \hfill%
+    \insertshorttitle, \insertshortauthor%
+    \hfill%
+    \insertframenumber\:/\:\inserttotalframenumber%
+    \hspace*{1.5cm}%
+  \end{beamercolorbox}
+  \vspace{0.1cm}
+  \fi
+}
 
 \else\ifx\beamer@viennaOuter\beamer@viennaSidebar
-% sidebar style
+% sidebar outher theme
+
+% footline
 \useoutertheme[height=0pt]{\beamer@viennaOuter}
+\setbeamertemplate{footline}{
+  \ifnum\thepage>1
+  \vspace{-1cm}
+  \hfill\makebox[10pt]{\scriptsize\insertframenumber~~}
+  \vspace{0.1cm}
+  \fi
+}
 \else
 \useoutertheme{\beamer@viennaOuter}
-\fi\fi % if outer=TUW plain or if outer=sidebar
+\fi\fi % if outer=plain or if outer=sidebar
 
 %%% inner
+\setbeamertemplate{itemize items}[circle]
 \setbeamertemplate{section in toc}[square]
 \setbeamertemplate{subsection in toc}[square]
+\setlength{\parskip}{6pt}
 
 % blocks
 \setbeamertemplate{blocks}[rounded]
