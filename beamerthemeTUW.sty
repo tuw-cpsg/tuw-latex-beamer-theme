@@ -1,3 +1,11 @@
+%%
+% @file beamerthemeTUW.sty
+% @date 30.08.2016
+% @author OSUE-Team 2010, OSUE-Team 2016
+%
+% @brief Beamer LaTeX template matching the corporate design of TU Wien.
+%%
+
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{beamerthemeTUW}[2016/08/30 Beamer template that fits the TU Wien corporate design (adopted styles from powerpoint presentation template)]
 
@@ -8,9 +16,13 @@
 \def\beamer@viennaSidebar{sidebar}
 \def\beamer@viennaHelvetica{helvetica}
 
+%%% options
+% The user may choose helvetica when the TU Wien font is not installed.
 \DeclareOptionBeamer{font}{\def\beamer@viennaFont{#1}}
+% Another outer theme may be chosen, however it won't fit the CD of TU Wien (in
+% color or style).
 \DeclareOptionBeamer{outer}{\def\beamer@viennaOuter{#1}}
-\ExecuteOptionsBeamer{outer=plain}
+\ExecuteOptionsBeamer{outer=plain} % default style
 \ProcessOptionsBeamer
 
 \ifx\beamer@viennaFont\beamer@viennaHelvetica
@@ -22,11 +34,11 @@
 
 \mode<presentation>
 
-\setbeamercovered{transparent}
-\beamertemplatenavigationsymbolsempty
-
 %%% colors
-\definecolor{TUWblue}{RGB}{0,102,153}
+% For some reason the logo is not in TU-blue (0,102,153). The powerpoint
+% presentation has TU-blue as background and the logo with a different color
+% (doesn't look nice). We align the TU-blue to the logo, like in the CD manual.
+\definecolor{TUWblue}{RGB}{0,116,178}
 \definecolor{TUWgray}{RGB}{102,102,102}
 \definecolor{IceBlue}{RGB}{222,231,236}
 
@@ -58,16 +70,32 @@
 \setbeamercolor{block body example}{parent=block body}
 \setbeamercolor{block body alerted}{parent=block body, fg=\alertred}
 
-\setbeamercolor{headline}{fg=black}
-\setbeamercolor{footline}{fg=\TUWblue}
 \setbeamercolor{title in head/foot}{fg=\TUWblue}
 \setbeamercolor{page number in head/foot}{fg=\TUWblue}
+\setbeamercolor{footline}{fg=\TUWblue}
 
+% color difference of plain and other outer styles
+\ifx\beamer@viennaOuter\beamer@viennaPlain
+% plain style - this is the CD of TU Wien
 % title page
 \setbeamercolor{title}{fg=white}
 \setbeamercolor{subtitle}{fg=white}
 \setbeamercolor{author}{fg=white}
+\setbeamercolor{institute}{fg=white}
 \setbeamercolor{date}{fg=white}
+% content page
+\setbeamercolor{headline}{fg=black}
+\else
+% other outer styles (e.g., sidebar)
+% title page
+\setbeamercolor{title}{fg=\TUWgray}
+\setbeamercolor{subtitle}{fg=\TUWgray}
+\setbeamercolor{author}{fg=black}
+\setbeamercolor{institute}{fg=black}
+\setbeamercolor{date}{fg=black}
+% content page
+\setbeamercolor{headline}{fg=\TUWgray}
+\fi
 
 % sidebar
 \setbeamercolor{sidebar}{bg=\TUWblue,fg=white}
@@ -81,32 +109,51 @@
 \setbeamercolor{subsection in sidebar shaded}{fg=white}
 
 %%% fonts
+
+% font family
 \ifx\beamer@viennaFont\beamer@viennaHelvetica
-\setbeamerfont{title}{series*=b,size=\huge}
-\setbeamerfont{author}{series*=m,size=\normal}
-\setbeamerfont{date}{size=\normal}
-\setbeamerfont{frametitle}{series*=b,size=\large}
-\setbeamerfont{headline}{series*=b,size=\scriptsize}
-\setbeamerfont{footline}{series*=b,size=\scriptsize}
-\setbeamerfont{sidebar}{series*=b}
+\setbeamerfont{title}{series*=b}
+\setbeamerfont{author}{series*=m}
+\setbeamerfont{institute}{series*=m}
+\setbeamerfont{date}{series*=m}
+\setbeamerfont{frametitle}{series*=b}
+\setbeamerfont{headline}{series*=b}
+\setbeamerfont{footline}{series*=b}
 \else
-\setbeamerfont{title}{family*=din,size=\huge}
-\setbeamerfont{author}{series*=m,size=\normalsize}
-\setbeamerfont{frametitle}{family*=din,size=\large}
-\setbeamerfont{headline}{family*=din,size=\scriptsize}
-\setbeamerfont{footline}{family*=din,size=\scriptsize}
-\setbeamerfont{sidebar}{family*=din}
+\setbeamerfont{title}{family*=din}
+\setbeamerfont{author}{family*=din}
+\setbeamerfont{institute}{family*=din}
+\setbeamerfont{date}{family*=din}
+\setbeamerfont{frametitle}{family*=din}
+\setbeamerfont{headline}{family*=din}
+\setbeamerfont{footline}{family*=din}
 \fi
 
-\setbeamerfont{section in sidebar}{size=\scriptsize}
-\setbeamerfont{subsection in sidebar}{size=\tiny}
+% font size difference of plain and other outer styles
+\ifx\beamer@viennaOuter\beamer@viennaPlain
+% plain style - this is the CD of TU Wien
+\setbeamerfont{title}{size=\huge}
+\setbeamerfont{author}{size=\normalsize}
+\setbeamerfont{institute}{size=\normalsize}
+\setbeamerfont{date}{size=\normalsize}
+\setbeamerfont{frametitle}{size=\large}
+\setbeamerfont{headline}{size=\scriptsize}
+\setbeamerfont{footline}{size=\scriptsize}
+\else
+% other outer styles (e.g., sidebar)
+% keep defaults
+\fi
+
 \setbeamerfont{section in toc}{parent=normal text}
 \setbeamerfont{subsection in toc}{parent=section in toc}
 
 %%% outer
-
 \setbeamersize{text margin left=0.09\paperwidth}
 \setbeamersize{text margin right=0.12\paperwidth}
+\beamertemplatenavigationsymbolsempty
+
+\ifx\beamer@viennaOuter\beamer@viennaPlain
+% plain style - this is the CD of TU Wien
 
 % background
 \setbeamertemplate{background}{
@@ -145,20 +192,25 @@
   \vfill
 }
 
+\setbeamertemplate{footline}[page number]
+
+\else\ifx\beamer@viennaOuter\beamer@viennaSidebar
+% sidebar style
+\useoutertheme[height=0pt]{\beamer@viennaOuter}
+\else
+\useoutertheme{\beamer@viennaOuter}
+\fi\fi % if outer=TUW plain or if outer=sidebar
+
 %%% inner
 \setbeamertemplate{section in toc}[square]
 \setbeamertemplate{subsection in toc}[square]
 
+% blocks
 \setbeamertemplate{blocks}[rounded]
 \pgfdeclareverticalshading{bmb@transition}{\the\paperwidth}{color(0pt)=(\IceBlue); color(3.0pt)=(\IceBlue)}
 
-\ifx\beamer@viennaOuter\beamer@viennaPlain
-\setbeamertemplate{footline}[page number]
-\else\ifx\beamer@viennaOuter\beamer@viennaSidebar
-\useoutertheme[height=0pt]{\beamer@viennaOuter}
-\else
-\useoutertheme{\beamer@viennaOuter}
-\fi\fi
+\setbeamercovered{transparent}
+
 
 \hypersetup{colorlinks=true,linkcolor=fg,urlcolor=\TUWblue}
 

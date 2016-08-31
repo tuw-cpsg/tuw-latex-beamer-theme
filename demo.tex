@@ -1,14 +1,16 @@
 \documentclass{beamer}
 
 \usetheme{TUW}
+% you may choose helvetica as font option if TU-Wien font is not available
+%\usetheme[font=helvetica]{TUW}
+% sidebar (not in TU Wien CD!)
 %\usetheme[outer=sidebar]{TUW}
 
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 
-%%%
-% title page settings
-\title{
+%%% title page settings
+\title[Short Title]{%
   Title (first line),\\
   second line of the title
 }
@@ -16,19 +18,20 @@
 \author{Max Mustermann}
 \date{\today}
 
+% optional institute (used in other outer styles; not part of TU Wien's CD)
 \institute[TU Wien]
-{
+{%
   Institute of Computer Engineering\\
   TU Wien\\
   -\\
   182.709 Operating Systems UE\\
   WS 2016/17
 }
-%
-%%%
 
+%%% slides start here
 \begin{document}
 
+% first frame must include the title page!
 \begin{frame}
   \titlepage
 \end{frame}
@@ -36,7 +39,7 @@
 \begin{frame}
   \frametitle{Title first category}
   \framesubtitle{Title second category}
-%  \framesubtitle{Title third category}
+  % no deeper title hierarchy provided
 
   Donec suscipit luctus lacus ut viverra. Proin molestie eros tellus, vitae
   elementum nulla fringilla nec. Pellentesque facilisis, elit ac egestas
@@ -50,5 +53,41 @@
   \item Nullam vehicula magna orci, a interdum risus feugiat et.
   \end{itemize}
 \end{frame}
+
+\begin{frame}{First title}{Second title}
+  \begin{theorem}
+    This is a theorem.
+  \end{theorem}
+  \begin{proof}
+    This is a proof.
+  \end{proof}
+\end{frame}
+
+\begin{frame}{Lists}{itemize, description, enumerate}
+  \begin{itemize}
+  \item Sed semper egestas libero vitae tempus.
+  \item Interdum et malesuada fames ac ante ipsum primis in faucibus.
+  \item Nullam vehicula magna orci, a interdum risus feugiat et.
+    \begin{itemize}
+    \item Second level.
+      \begin{itemize}
+      \item Third level.
+      \end{itemize}
+    \end{itemize}
+  \end{itemize}
+
+  \begin{enumerate}
+  \item Sed semper egestas libero vitae tempus.
+  \item Interdum et malesuada fames ac ante ipsum primis in faucibus.
+  \item Nullam vehicula magna orci, a interdum risus feugiat et.
+  \end{enumerate}
+
+  \begin{description}
+  \item[Sed] semper egestas libero vitae tempus.
+  \item[Interdum] et malesuada fames ac ante ipsum primis in faucibus.
+  \item[Nullam] vehicula magna orci, a interdum risus feugiat et.
+  \end{description}
+\end{frame}
+
 
 \end{document}
