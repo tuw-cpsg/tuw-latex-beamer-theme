@@ -1,4 +1,4 @@
-# tuw-latex-beamer
+# tuw-latex-beamer-theme
 
 TU Wien LaTeX beamer theme.
 
@@ -23,4 +23,4 @@ Tested outer themes:
     \usetheme{TUW}
     \usetheme[outer=sidebar]{TUW}
 
-You can use [demo.tex](demo.tex) as a starting point for your presentation.
+You can use [demo.tex](tuw/demo.tex) as a starting point for your presentation.
