@@ -15,24 +15,35 @@
 \def\beamer@tuwPlain{plain}
 \def\beamer@tuwSidebar{sidebar}
 \def\beamer@tuwHelvetica{helvetica}
+\def\beamer@tuwNoImage{none}
+\def\beamer@tuwBuildingImage{TU_background}
 
 %%% options
 % The user may choose other fonts (TU Wien CD says to use helvetica).
 \DeclareOptionBeamer{font}{\def\beamer@tuwFont{#1}}
+\ExecuteOptionsBeamer{font=helvetica}
 % Another outer theme may be chosen, however it may not fit the TU Wien colors.
 \DeclareOptionBeamer{outer}{\def\beamer@tuwOuter{#1}}
+\ExecuteOptionsBeamer{outer=plain}
+% Background image of TU Wien building on title page.
+\DeclareOptionBeamer{titlepageimage}{\def\beamer@tuwBackgroundImage{#1}}
+\ExecuteOptionsBeamer{titlepageimage=none}
 % Print frame title beside the logo to save space.
 %% TODO
-
-% defaults
-\ExecuteOptionsBeamer{outer=plain}
-\ExecuteOptionsBeamer{font=helvetica}
 
 \ProcessOptionsBeamer
 
 \ifx\beamer@tuwFont\beamer@tuwHelvetica
 \RequirePackage{helvet}
 \fi
+
+\ifx\beamer@tuwBackgroundImage\beamer@tuwNoImage
+\def\beamer@tuwLogo{TU_Logo}
+\else\ifx\beamer@tuwBackgroundImage\beamer@tuwBuildingImage
+\def\beamer@tuwLogo{TU_Logo}
+\else
+\def\beamer@tuwLogo{TU_Logo_white}
+\fi\fi
 
 \mode<presentation>
 
@@ -160,9 +171,13 @@
   \begin{tikzpicture}
     \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
     % title page
+    \ifx\beamer@tuwBackgroundImage\beamer@tuwNoImage
     \fill[white] (0,0) rectangle (\the\paperwidth,\the\paperheight);
+    \else
+    \node[anchor=south west] (background) at (-0.15cm,-0.15cm) {\includegraphics[width=1.01\paperwidth]{\beamer@tuwBackgroundImage}};
+    \fi
     \fill[\tuwBlue, rounded corners=0.5cm] (-1cm,-1cm) rectangle (0.965\paperwidth,0.68\paperheight);
-    \node[anchor=south west] (logo) at (0.02\paperwidth,0.76\paperheight) {\includegraphics[width=0.4\paperwidth]{TU_Logo}};
+    \node[anchor=south west] (logo) at (0.02\paperwidth,0.76\paperheight) {\includegraphics[width=0.4\paperwidth]{\beamer@tuwLogo}};
     % content page
     \ifnum\thepage>1\relax%
     \fill[\iceBlue] (0,0) rectangle (\the\paperwidth,\the\paperheight);
