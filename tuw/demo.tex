@@ -6,17 +6,17 @@
 
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
+\usepackage{listings}
 
 %%% title page settings
-\title[Short Title]{%
-  Title (first line),\\
-  second line of the title
+\title[TUW Theme Demo]{%
+  TU Wien Theme Demo
 }
-\subtitle{Subtitle in a single line.}
-\author{Max Mustermann}
+\subtitle{This demo presentation shows and tests the TU Wien LaTeX beamer theme.}
+\author{OSUE-Team 2016}
 \date{\today}
 
-% optional institute (used in other outer styles; not part of TU Wien's CD)
+% optional institute (used in other outer themes; not part of TU Wien's CD)
 \institute[TU Wien]
 {%
   Institute of Computer Engineering\\
@@ -34,6 +34,15 @@
   \titlepage
 \end{frame}
 
+% table of contents if you have a long presentation (uses 'part' and 'section'
+% elements)
+\begin{frame}{Outline}
+  \tableofcontents
+\end{frame}
+
+\section{Text}
+
+\subsection[Paragraphs]{Simple Paragraphs}
 \begin{frame}
   \frametitle{Title first category}
   \framesubtitle{Title second category}
@@ -50,10 +59,24 @@
 
   Donec suscipit luctus lacus ut viverra. Proin molestie eros tellus, vitae
   elementum nulla fringilla nec. Pellentesque facilisis, elit ac egestas
-  gravida, ante leo euismod velit, et suscipit est ex ut ex.
+  gravida, ante leo euismod velit.
 \end{frame}
 
-\begin{frame}{First title}{Second title}
+\subsection{Blocks}
+\begin{frame}{Blocks}
+  \begin{block}{Block}
+    This is a block.
+  \end{block}
+  \begin{exampleblock}{Example}
+    This is an example block.
+  \end{exampleblock}
+  \begin{alertblock}{Attention}
+    This is an alert block.
+  \end{alertblock}
+\end{frame}
+
+\subsection{More Blocks}
+\begin{frame}{More Blocks}{theorem, proof}
   \begin{theorem}
     This is a theorem.
   \end{theorem}
@@ -64,6 +87,7 @@
   \end{proof}
 \end{frame}
 
+\subsection{Lists}
 \begin{frame}{Lists}{itemize, description, enumerate}
   \begin{itemize}
   \item Sed semper egestas libero vitae tempus.
@@ -84,6 +108,48 @@
   \item[Sed] semper egestas libero vitae tempus.
   \item[Interdum] et malesuada fames ac ante ipsum primis in faucibus.
   \end{description}
+\end{frame}
+
+\section{Special}
+
+\subsection{Columns}
+\begin{frame}{Columns}
+  \begin{columns}[c]
+    \column{.5\textwidth}
+    \begin{itemize}
+    \item Some text
+    \item with a picture on the right
+    \item blah blah
+    \item more blah blah
+    \end{itemize}
+    \column{.5\textwidth}
+    \includegraphics[width=.8\textwidth]{TU_Logo}
+  \end{columns}
+\end{frame}
+
+\subsection{Code}
+\begin{frame}[fragile=singleslide]{Code}
+   \begin{lstlisting}[basicstyle=\ttfamily]
+#include <stdio.h>
+
+int main(void)
+{
+  (void) printf("Hello, C World\n");
+
+  return 0;
+}
+   \end{lstlisting}
+\end{frame}
+
+\section{References}
+\begin{frame}{References}
+  You can add references like in a LaTeX article.
+
+  \begin{thebibliography}{10}
+  \bibitem{Goldbach1742}[1] T. Tantau, J. Wright and V. Miletić: The Beamer
+    class - User Guide for version 3.36, 2011, available online:
+    \url{http://texdoc.net/texmf-dist/doc/latex/beamer/doc/beameruserguide.pdf}.
+  \end{thebibliography}
 \end{frame}
 
 

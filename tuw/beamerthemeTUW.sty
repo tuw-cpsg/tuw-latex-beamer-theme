@@ -1,6 +1,6 @@
 %%
 % @file beamerthemeTUW.sty
-% @date 30.08.2016
+% @date 2016-08-30
 % @author OSUE-Team 2010, OSUE-Team 2016
 %
 % @brief Beamer LaTeX template matching the corporate design of TU Wien.
@@ -12,15 +12,15 @@
 \RequirePackage{graphicx}
 \RequirePackage{tikz}
 
-\def\beamer@viennaPlain{plain}
-\def\beamer@viennaSidebar{sidebar}
-\def\beamer@viennaHelvetica{helvetica}
+\def\beamer@tuwPlain{plain}
+\def\beamer@tuwSidebar{sidebar}
+\def\beamer@tuwHelvetica{helvetica}
 
 %%% options
 % The user may choose other fonts (TU Wien CD says to use helvetica).
-\DeclareOptionBeamer{font}{\def\beamer@viennaFont{#1}}
+\DeclareOptionBeamer{font}{\def\beamer@tuwFont{#1}}
 % Another outer theme may be chosen, however it may not fit the TU Wien colors.
-\DeclareOptionBeamer{outer}{\def\beamer@viennaOuter{#1}}
+\DeclareOptionBeamer{outer}{\def\beamer@tuwOuter{#1}}
 % Print frame title beside the logo to save space.
 %% TODO
 
@@ -30,7 +30,7 @@
 
 \ProcessOptionsBeamer
 
-\ifx\beamer@viennaFont\beamer@viennaHelvetica
+\ifx\beamer@tuwFont\beamer@tuwHelvetica
 \RequirePackage{helvet}
 \fi
 
@@ -40,44 +40,44 @@
 % For some reason the logo is not in TU-blue (0,102,153). The powerpoint
 % presentation has TU-blue as background and the logo with a different color
 % (doesn't look nice). We align the TU-blue to the logo, like in the CD manual.
-\definecolor{TUWblue}{RGB}{0,116,178}
-\definecolor{TUWgray}{RGB}{102,102,102}
-\definecolor{IceBlue}{RGB}{222,231,236}
+\definecolor{tuwBlue}{RGB}{0,116,178}
+\definecolor{tuwGray}{RGB}{102,102,102}
+\definecolor{iceBlue}{RGB}{222,231,236}
 
-\def\TUWblue{TUWblue}
-\def\TUWgray{TUWgray}
-\def\IceBlue{IceBlue}
-\def\TUWlightblue{TUWblue!20!white}
-\def\TUWmediumblue{TUWblue!45!white}
-\def\TUWdarkblue{TUWblue!70!black}
+\def\tuwBlue{tuwBlue}
+\def\tuwGray{tuwGray}
+\def\iceBlue{iceBlue}
+\def\tuwLightBlue{tuwBlue!20!white}
+\def\tuwMediumBlue{tuwBlue!45!white}
+\def\tuwDarkBlue{tuwBlue!70!black}
 \def\alertred{red!50!black}
 
 % content page
 \setbeamercolor{normal text}{fg=black,bg=white}
 \setbeamercolor{alerted text}{fg=\alertred}
-\setbeamercolor{structure}{fg=\TUWblue}
+\setbeamercolor{structure}{fg=\tuwBlue}
 \setbeamercolor{frametitle}{fg=black}
 
-\setbeamercolor{palette primary}{fg=\TUWdarkblue,bg=\TUWlightblue}
-\setbeamercolor{palette secondary}{fg=\TUWblue!50!black,bg=\TUWmediumblue}
-\setbeamercolor{palette tertiary}{fg=white,bg=\TUWblue}
+\setbeamercolor{palette primary}{fg=\tuwDarkBlue,bg=\tuwLightBlue}
+\setbeamercolor{palette secondary}{fg=\tuwBlue!50!black,bg=\tuwMediumBlue}
+\setbeamercolor{palette tertiary}{fg=white,bg=\tuwBlue}
 
 \setbeamercolor{section in toc}{parent=normal text}
 \setbeamercolor{subsection in toc}{parent=section in toc}
 
-\setbeamercolor{block title}{fg=white, bg=\TUWblue}
-\setbeamercolor{block title example}{fg=white, bg=\TUWblue}
+\setbeamercolor{block title}{fg=white, bg=\tuwBlue}
+\setbeamercolor{block title example}{fg=white, bg=\tuwBlue}
 \setbeamercolor{block title alerted}{fg=white, bg=\alertred}
-\setbeamercolor{block body}{bg=\IceBlue}
+\setbeamercolor{block body}{bg=\iceBlue}
 \setbeamercolor{block body example}{parent=block body}
 \setbeamercolor{block body alerted}{parent=block body, fg=\alertred}
 
-\setbeamercolor{title in head/foot}{fg=\TUWblue}
-\setbeamercolor{page number in head/foot}{fg=\TUWblue}
-\setbeamercolor{footline}{fg=\TUWblue}
+\setbeamercolor{title in head/foot}{fg=\tuwBlue}
+\setbeamercolor{page number in head/foot}{fg=\tuwBlue}
+\setbeamercolor{footline}{fg=\tuwBlue}
 
 % color difference of plain and other outer styles
-\ifx\beamer@viennaOuter\beamer@viennaPlain
+\ifx\beamer@tuwOuter\beamer@tuwPlain
 % plain style - this is the CD of TU Wien
 % title page
 \setbeamercolor{title}{fg=white}
@@ -90,26 +90,26 @@
 \else
 % other outer styles (e.g., sidebar)
 % title page
-\setbeamercolor{title}{fg=\TUWgray}
-\setbeamercolor{subtitle}{fg=\TUWgray}
+\setbeamercolor{title}{fg=\tuwGray}
+\setbeamercolor{subtitle}{fg=\tuwGray}
 \setbeamercolor{author}{fg=black}
 \setbeamercolor{institute}{fg=black}
 \setbeamercolor{date}{fg=black}
 % content page
-\setbeamercolor{frametitle}{fg=\TUWgray}
-\setbeamercolor{headline}{fg=\TUWgray}
-\setbeamercolor{footline}{fg=\TUWgray}
+\setbeamercolor{frametitle}{fg=\tuwGray}
+\setbeamercolor{headline}{fg=\tuwGray}
+\setbeamercolor{footline}{fg=\tuwGray}
 \fi
 
 % sidebar
-\setbeamercolor{sidebar}{bg=\TUWblue,fg=white}
-\setbeamercolor{palette sidebar primary}{fg=\TUWdarkblue,bg=\TUWlightblue}
-\setbeamercolor{palette sidebar secondary}{fg=\TUWdarkblue,bg=\TUWlightblue}
+\setbeamercolor{sidebar}{bg=\tuwBlue,fg=white}
+\setbeamercolor{palette sidebar primary}{fg=\tuwDarkBlue,bg=\tuwLightBlue}
+\setbeamercolor{palette sidebar secondary}{fg=\tuwDarkBlue,bg=\tuwLightBlue}
 \setbeamercolor{palette sidebar tertiary}{fg=white}
 \setbeamercolor{title in sidebar}{fg=white}
-\setbeamercolor{section in sidebar}{fg=\TUWdarkblue}
+\setbeamercolor{section in sidebar}{fg=\tuwDarkBlue}
 \setbeamercolor{section in sidebar shaded}{fg=white}
-\setbeamercolor{subsection in sidebar}{fg=\TUWdarkblue}
+\setbeamercolor{subsection in sidebar}{fg=\tuwDarkBlue}
 \setbeamercolor{subsection in sidebar shaded}{fg=white}
 
 %%% fonts
@@ -124,7 +124,7 @@
 \setbeamerfont{footline}{series*=m}
 
 % font size difference of plain and other outer styles
-\ifx\beamer@viennaOuter\beamer@viennaPlain
+\ifx\beamer@tuwOuter\beamer@tuwPlain
 % plain style - this is the CD of TU Wien
 \setbeamerfont{title}{size=\huge}
 \setbeamerfont{author}{size=\normalsize}
@@ -142,12 +142,17 @@
 \setbeamerfont{section in toc}{parent=normal text}
 \setbeamerfont{subsection in toc}{parent=section in toc}
 
+% sidebar
+\setbeamerfont{title in sidebar}{series*=b}
+\setbeamerfont{section in sidebar}{series*=b,size=\tiny}
+\setbeamerfont{subsection in sidebar}{size=\tiny}
+
 %%% outer
 \setbeamersize{text margin left=1.2cm}
 \setbeamersize{text margin right=1.5cm}
 \beamertemplatenavigationsymbolsempty
 
-\ifx\beamer@viennaOuter\beamer@viennaPlain
+\ifx\beamer@tuwOuter\beamer@tuwPlain
 % plain outher theme - this is the CD of TU Wien
 
 % background
@@ -156,11 +161,11 @@
     \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
     % title page
     \fill[white] (0,0) rectangle (\the\paperwidth,\the\paperheight);
-    \fill[\TUWblue, rounded corners=0.5cm] (-1cm,-1cm) rectangle (0.965\paperwidth,0.68\paperheight);
+    \fill[\tuwBlue, rounded corners=0.5cm] (-1cm,-1cm) rectangle (0.965\paperwidth,0.68\paperheight);
     \node[anchor=south west] (logo) at (0.02\paperwidth,0.76\paperheight) {\includegraphics[width=0.4\paperwidth]{TU_Logo}};
     % content page
     \ifnum\thepage>1\relax%
-    \fill[\IceBlue] (0,0) rectangle (\the\paperwidth,\the\paperheight);
+    \fill[\iceBlue] (0,0) rectangle (\the\paperwidth,\the\paperheight);
     \fill[white, rounded corners=0.5cm] (-1cm,-1cm) rectangle(0.97\paperwidth,0.91\paperheight);
     \node[anchor=south west] (logo) at (0.02\paperwidth,0.915\paperheight) {\includegraphics[width=0.04\paperwidth]{TU_Signet}};
     \fi
@@ -215,11 +220,11 @@
   \fi
 }
 
-\else\ifx\beamer@viennaOuter\beamer@viennaSidebar
+\else\ifx\beamer@tuwOuter\beamer@tuwSidebar
 % sidebar outher theme
 
 % footline
-\useoutertheme[height=0pt]{\beamer@viennaOuter}
+\useoutertheme[height=0pt]{\beamer@tuwOuter}
 \setbeamertemplate{footline}{
   \ifnum\thepage>1
   \vspace{-1cm}
@@ -228,22 +233,25 @@
   \fi
 }
 \else
-\useoutertheme{\beamer@viennaOuter}
+\useoutertheme{\beamer@tuwOuter}
 \fi\fi % if outer=plain or if outer=sidebar
 
 %%% inner
+\ifx\beamer@tuwOuter\beamer@tuwPlain
 \setbeamertemplate{itemize items}[circle]
-\setbeamertemplate{section in toc}[square]
-\setbeamertemplate{subsection in toc}[square]
+\else
+% defaults
+\fi % if outer=plain
+
 \setlength{\parskip}{6pt}
 
 % blocks
 \setbeamertemplate{blocks}[rounded]
-\pgfdeclareverticalshading{bmb@transition}{\the\paperwidth}{color(0pt)=(\IceBlue); color(3.0pt)=(\IceBlue)}
+\pgfdeclareverticalshading{bmb@transition}{\the\paperwidth}{color(0pt)=(\iceBlue); color(3.0pt)=(\iceBlue)}
 
-\setbeamercovered{transparent}
+\setbeamercovered{invisible}
 
 
-\hypersetup{colorlinks=true,linkcolor=fg,urlcolor=\TUWblue}
+\hypersetup{colorlinks=true,linkcolor=fg,urlcolor=\tuwBlue}
 
 \mode<all>
