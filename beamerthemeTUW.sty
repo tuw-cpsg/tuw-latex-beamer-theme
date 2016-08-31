@@ -63,6 +63,12 @@
 \setbeamercolor{title in head/foot}{fg=\TUWblue}
 \setbeamercolor{page number in head/foot}{fg=\TUWblue}
 
+% title page
+\setbeamercolor{title}{fg=white}
+\setbeamercolor{subtitle}{fg=white}
+\setbeamercolor{author}{fg=white}
+\setbeamercolor{date}{fg=white}
+
 % sidebar
 \setbeamercolor{sidebar}{bg=\TUWblue,fg=white}
 \setbeamercolor{palette sidebar primary}{fg=\TUWdarkblue,bg=\TUWlightblue}
@@ -76,14 +82,17 @@
 
 %%% fonts
 \ifx\beamer@viennaFont\beamer@viennaHelvetica
-\setbeamerfont{title}{series*=b}
-\setbeamerfont{frametitle}{series*=b}
+\setbeamerfont{title}{series*=b,size=\huge}
+\setbeamerfont{author}{series*=m,size=\normal}
+\setbeamerfont{date}{size=\normal}
+\setbeamerfont{frametitle}{series*=b,size=\large}
 \setbeamerfont{headline}{series*=b,size=\scriptsize}
 \setbeamerfont{footline}{series*=b,size=\scriptsize}
 \setbeamerfont{sidebar}{series*=b}
 \else
-\setbeamerfont{title}{family*=din}
-\setbeamerfont{frametitle}{family*=din}
+\setbeamerfont{title}{family*=din,size=\huge}
+\setbeamerfont{author}{series*=m,size=\normalsize}
+\setbeamerfont{frametitle}{family*=din,size=\large}
 \setbeamerfont{headline}{family*=din,size=\scriptsize}
 \setbeamerfont{footline}{family*=din,size=\scriptsize}
 \setbeamerfont{sidebar}{family*=din}
@@ -114,6 +123,26 @@
     \node[anchor=south west] (logo) at (0.02\paperwidth,0.915\paperheight) {\includegraphics[width=0.04\paperwidth]{TU_Signet}};
     \fi
   \end{tikzpicture}
+}
+
+% title page
+\setbeamertemplate{title page}{
+  \vskip 4.5cm%
+  \begin{beamercolorbox}[leftskip=1.5cm]{title}%
+    \usebeamerfont{title}\inserttitle%
+  \end{beamercolorbox}%
+  \vskip 0.5cm%
+  \begin{beamercolorbox}[leftskip=1.5cm]{subtitle}
+    \usebeamerfont{subtitle}\insertsubtitle%
+  \end{beamercolorbox}
+  \vskip 1.3cm%
+  \begin{beamercolorbox}[leftskip=1.5cm]{author}
+    \usebeamerfont{author}\insertauthor%
+  \end{beamercolorbox}
+  \begin{beamercolorbox}[leftskip=1.5cm]{date}
+    \usebeamerfont{date}\insertdate%
+  \end{beamercolorbox}
+  \vfill
 }
 
 %%% inner
