@@ -16,7 +16,8 @@
 \def\beamer@tuwSidebar{sidebar}
 \def\beamer@tuwHelvetica{helvetica}
 \def\beamer@tuwNoImage{none}
-\def\beamer@tuwBuildingImage{TU_background}
+\def\beamer@tuwLogo{TU_Logo}
+\def\beamer@tuwLogoWhite{TU_Logo_white}
 
 %%% options
 % The user may choose other fonts (TU Wien CD says to use helvetica).
@@ -26,8 +27,16 @@
 \DeclareOptionBeamer{outer}{\def\beamer@tuwOuter{#1}}
 \ExecuteOptionsBeamer{outer=plain}
 % Background image of TU Wien building on title page.
-\DeclareOptionBeamer{titlepageimage}{\def\beamer@tuwBackgroundImage{#1}}
-\ExecuteOptionsBeamer{titlepageimage=none}
+\newif\ifbeamer@tuwBackground
+\DeclareOptionBeamer{tuw_background}{\beamer@tuwBackgroundtrue}
+\beamer@tuwBackgroundfalse
+% Individual background image on title page.
+\DeclareOptionBeamer{tuw_image}{\def\beamer@tuwImage{#1}}
+\ExecuteOptionsBeamer{tuw_image=none}
+% White logo (if tuw_image is dark it should be set to white).
+\newif\ifbeamer@tuwWhiteLogo
+\DeclareOptionBeamer{tuw_whitelogo}{\beamer@tuwWhiteLogotrue}
+\beamer@tuwWhiteLogofalse
 % Print frame title beside the logo to save space.
 %% TODO
 
@@ -36,14 +45,6 @@
 \ifx\beamer@tuwFont\beamer@tuwHelvetica
 \RequirePackage{helvet}
 \fi
-
-\ifx\beamer@tuwBackgroundImage\beamer@tuwNoImage
-\def\beamer@tuwLogo{TU_Logo}
-\else\ifx\beamer@tuwBackgroundImage\beamer@tuwBuildingImage
-\def\beamer@tuwLogo{TU_Logo}
-\else
-\def\beamer@tuwLogo{TU_Logo_white}
-\fi\fi
 
 \mode<presentation>
 
@@ -171,13 +172,19 @@
   \begin{tikzpicture}
     \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
     % title page
-    \ifx\beamer@tuwBackgroundImage\beamer@tuwNoImage
+    \ifbeamer@tuwBackground % tu building background selected
+    \node[anchor=south west] (background) at (-0.15cm,-0.15cm) {\includegraphics[width=1.01\paperwidth]{TU_Background}};
+    \else\ifx\beamer@tuwImage\beamer@tuwNoImage % no background image specified
     \fill[white] (0,0) rectangle (\the\paperwidth,\the\paperheight);
-    \else
-    \node[anchor=south west] (background) at (-0.15cm,-0.15cm) {\includegraphics[width=1.01\paperwidth]{\beamer@tuwBackgroundImage}};
-    \fi
+    \else % individual background image
+    \node[anchor=south west] (background) at (-0.15cm,-0.15cm) {\includegraphics[width=1.01\paperwidth]{\beamer@tuwImage}};
+    \fi\fi
     \fill[\tuwBlue, rounded corners=0.5cm] (-1cm,-1cm) rectangle (0.965\paperwidth,0.68\paperheight);
+    \ifbeamer@tuwWhiteLogo % white logo option specified
+    \node[anchor=south west] (logo) at (0.02\paperwidth,0.76\paperheight) {\includegraphics[width=0.4\paperwidth]{\beamer@tuwLogoWhite}};
+    \else
     \node[anchor=south west] (logo) at (0.02\paperwidth,0.76\paperheight) {\includegraphics[width=0.4\paperwidth]{\beamer@tuwLogo}};
+    \fi
     % content page
     \ifnum\thepage>1\relax%
     \fill[\iceBlue] (0,0) rectangle (\the\paperwidth,\the\paperheight);
