@@ -7,6 +7,15 @@ TU Wien LaTeX beamer theme.
 
     $ make install
 
+However, you don't have to necessarily install the theme:
+
+* You can simply copy the theme, i.e., the `beamerthemeTUW.sty` file and all
+  pictures in the `tuw` folder, into the folder where your presentation
+  resides.
+
+* You can copy the folder `tuw` from this repo and start preparing your
+  presentation `demo.tex`.
+
 
 ## Usage
 
