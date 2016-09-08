@@ -1,10 +1,15 @@
 \documentclass{beamer}
 
-\usetheme{TUW}
+% corporate design of TU Wien
+%\usetheme[font=helvetica]{TUW}
 % sidebar (not in TU Wien CD!)
-%\usetheme[outer=sidebar]{TUW}
+\usetheme[outer=sidebar]{TUW}
 
-\usepackage[T1]{fontenc}
+% if you use german umlaute use T1 encoding:
+%\usepackage[T1]{fontenc}
+% default Latex fonts are not T1 supported -> bitmaps used, this is not nice on
+% screen; you can use the lmodern package instead
+%\usepackage{lmodern}
 \usepackage[utf8]{inputenc}
 \usepackage{listings}
 
@@ -19,9 +24,9 @@
 % optional institute (used in other outer themes; not part of TU Wien's CD)
 \institute[TU Wien]
 {%
-  Institute of Computer Engineering\\
-  TU Wien\\
-  -\\
+  Department of Computer Engineering\\
+  Technische Universität Wien\\
+  ---\\
   182.709 Operating Systems UE\\
   WS 2016/17
 }
