@@ -33,3 +33,8 @@ Tested outer themes:
     \usetheme[outer=sidebar]{TUW}
 
 You can use [demo.tex](tuw/demo.tex) as a starting point for your presentation.
+
+
+## Credits
+
+* Wolfang Puffitsch (original theme from 2010)

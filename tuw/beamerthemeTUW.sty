@@ -1,7 +1,7 @@
 %%
 % @file beamerthemeTUW.sty
 % @date 2016-08-30
-% @author OSUE-Team 2010, OSUE-Team 2016
+% @author Wolfgang Puffitsch, Denise Ratasich
 %
 % @brief Beamer LaTeX template matching the corporate design of TU Wien.
 %%
@@ -251,6 +251,8 @@
 
 \setbeamercovered{invisible}
 
+% emphasize
+\renewcommand<>{\emph}[1]{{\only#2{\color{tuwBlue}}#1}}
 
 \hypersetup{colorlinks=true,linkcolor=fg,urlcolor=\tuwBlue}
 
