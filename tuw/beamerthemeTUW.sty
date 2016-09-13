@@ -115,13 +115,13 @@
 %%% fonts
 
 % font weight
-\setbeamerfont{title}{series*=b}
-\setbeamerfont{author}{series*=m}
-\setbeamerfont{institute}{series*=m}
-\setbeamerfont{date}{series*=m}
-\setbeamerfont{frametitle}{series*=b}
-\setbeamerfont{headline}{series*=m}
-\setbeamerfont{footline}{series*=m}
+\setbeamerfont{title}{series=\bfseries}
+\setbeamerfont{author}{series=\mdseries}
+\setbeamerfont{institute}{series=\mdseries}
+\setbeamerfont{date}{series=\mdseries}
+\setbeamerfont{frametitle}{series=\mdseries}
+\setbeamerfont{headline}{series=\mdseries}
+\setbeamerfont{footline}{series=\mdseries}
 
 % font size difference of plain and other outer styles
 \ifx\beamer@tuwOuter\beamer@tuwPlain
@@ -143,8 +143,8 @@
 \setbeamerfont{subsection in toc}{parent=section in toc}
 
 % sidebar
-\setbeamerfont{title in sidebar}{series*=b}
-\setbeamerfont{section in sidebar}{series*=b,size=\tiny}
+\setbeamerfont{title in sidebar}{series=\bfseries}
+\setbeamerfont{section in sidebar}{series=\bfseries,size=\tiny}
 \setbeamerfont{subsection in sidebar}{size=\tiny}
 
 %%% outer
@@ -221,7 +221,7 @@
 }
 
 \else\ifx\beamer@tuwOuter\beamer@tuwSidebar
-% sidebar outher theme
+% sidebar outer theme
 
 % footline
 \useoutertheme[height=0pt]{\beamer@tuwOuter}
