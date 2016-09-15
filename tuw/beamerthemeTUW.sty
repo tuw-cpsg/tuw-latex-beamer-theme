@@ -24,6 +24,8 @@
 \DeclareOptionBeamer{font}{\def\beamer@tuwFont{#1}}
 % Another outer theme may be chosen, however it may not fit the TU Wien colors.
 \DeclareOptionBeamer{outer}{\def\beamer@tuwOuter{#1}}
+% Width of the sidebar.
+\DeclareOptionBeamer{width}{\def\beamer@tuwWidth{#1}}
 % Background image of TU Wien building on title page.
 \newif\ifbeamer@tuwBackground
 \DeclareOptionBeamer{tuw_background}{\beamer@tuwBackgroundtrue}
@@ -37,6 +39,7 @@
 
 % defaults
 \ExecuteOptionsBeamer{outer=plain}
+\ExecuteOptionsBeamer{width=1.6cm}
 \ExecuteOptionsBeamer{font=\familydefault}
 \beamer@tuwBackgroundfalse
 \ExecuteOptionsBeamer{tuw_image=none}
@@ -248,7 +251,7 @@
 % sidebar outer theme
 
 % footline
-\useoutertheme[height=0pt]{\beamer@tuwOuter}
+\useoutertheme[width=\beamer@tuwWidth,height=0pt]{\beamer@tuwOuter}
 \setbeamertemplate{footline}{
   \ifnum\thepage>1
   \vspace{-1cm}
