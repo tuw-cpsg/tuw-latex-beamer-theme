@@ -4,12 +4,12 @@ DEMO := demo
 SHELL := /bin/bash
 PDFLATEX := pdflatex -interaction=nonstopmode -halt-on-error
 
-.PHONY: all clean
+.PHONY: all clean demo
 
 all: install
 
-demo:
-	cd $(THEME); $(PDFLATEX) $(DEMO).tex; cd ..
+demo: $(DEMO)/$(DEMO).tex
+	cd $(DEMO); $(PDFLATEX) $(DEMO).tex; cd ..
 
 install: install_theme
 
@@ -18,7 +18,7 @@ install_theme:
 	./install_theme.sh
 
 %.clean:
-	rm -f $*.{aux,nav,log,out,pdf,snm,toc}
+	rm -f $*.{aux,nav,log,out,pdf,snm,toc} $**~
 
-clean: $(THEME)/$(DEMO).clean
+clean: $(DEMO)/$(DEMO).clean
 	rm -f *~ *.log

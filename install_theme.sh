@@ -19,19 +19,17 @@ mkdir -p "${TEXDIR}"
 # install beamer theme
 if kpseaccess -w "${TEXDIR}"; then
     echo "Copy files ..."
-    mkdir -p "${TEXDIR}"/$THEMEDIR
-    cp $THEMEDIR/beamerthemeTUW.sty \
-        $THEMEDIR/TU_Logo.pdf $THEMEDIR/TU_Signet.pdf \
-        "${TEXDIR}"/$THEMEDIR
+    mkdir -p "${TEXDIR}"
+    cp -r $THEMEDIR "${TEXDIR}"
     break
 fi
 
 # verify installation
-path=$(kpsewhich beamerthemeTUW.sty) # search TUW beamer theme
+path=$(kpsewhich beamerthemetuw.sty) # search TUW beamer theme
 ret=$?
 if [ $ret -eq 0 ]; then
     echo "TUW theme installed to ${TEXDIR}/${THEMEDIR}."
 else
-    echo "Installation failed. Cannot find beamerthemeTUW.sty."
+    echo "Installation failed. Cannot find beamerthemetuw.sty."
     exit 1
 fi
