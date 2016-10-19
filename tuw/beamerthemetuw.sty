@@ -182,41 +182,42 @@
     \else\ifx\beamer@tuwImage\beamer@tuwNoImage % no background image specified
     \fill[white] (0,0) rectangle (\the\paperwidth,\the\paperheight);
     \else % individual background image
-    \node[anchor=south west] (background) at (-0.15cm,-0.15cm) {\includegraphics[width=1.01\paperwidth]{\beamer@tuwImage}};
+    \node[anchor=north west] (background) at (-0.15cm,-0.15cm) {\includegraphics[width=1.01\paperwidth]{\beamer@tuwImage}};
     \fi\fi
-    \fill[\tuwBlue, rounded corners=0.5cm] (-1cm,-1cm) rectangle (0.965\paperwidth,0.68\paperheight);
+    \fill[\tuwBlue, rounded corners=0.5cm] (-1cm,-1cm) rectangle (\paperwidth-0.5cm,\paperheight-3cm);
     \ifbeamer@tuwWhiteLogo % white logo option specified
-    \node[anchor=south west] (logo) at (0.02\paperwidth,0.76\paperheight) {\includegraphics[width=0.4\paperwidth]{\beamer@tuwLogoWhite}};
+    \node[anchor=north west] (logo) at (0.3cm,\paperheight-0.1cm) {\includegraphics[height=2cm]{\beamer@tuwLogoWhite}};
     \else
-    \node[anchor=south west] (logo) at (0.02\paperwidth,0.76\paperheight) {\includegraphics[width=0.4\paperwidth]{\beamer@tuwLogo}};
+    \node[anchor=north west] (logo) at (0.3cm,\paperheight-0.1cm) {\includegraphics[height=2cm]{\beamer@tuwLogo}};
     \fi
     % content page
     \ifnum\thepage>1\relax%
     \fill[\iceBlue] (0,0) rectangle (\the\paperwidth,\the\paperheight);
-    \fill[white, rounded corners=0.5cm] (-1cm,-1cm) rectangle(0.97\paperwidth,0.91\paperheight);
-    \node[anchor=south west] (logo) at (0.02\paperwidth,0.915\paperheight) {\includegraphics[width=0.04\paperwidth]{TU_Signet}};
+    \fill[white, rounded corners=0.5cm] (-1cm,-1cm) rectangle(\paperwidth-0.4cm,\paperheight-0.8cm);
+    \node[anchor=west] (logo) at (0.3cm,\paperheight-0.4cm) {\includegraphics[height=0.5cm]{TU_Signet}};
     \fi
   \end{tikzpicture}
 }
 
 % title page
+\def\beamer@titlepageLeft{1.6cm}
 \setbeamertemplate{title page}{
-  \vskip 4.5cm%
-  \begin{beamercolorbox}[leftskip=1.5cm]{title}%
+  \vskip 4cm%
+  \begin{beamercolorbox}[leftskip=\beamer@titlepageLeft]{title}%
     \usebeamerfont{title}\inserttitle%
   \end{beamercolorbox}%
   \vskip 0.5cm%
-  \begin{beamercolorbox}[leftskip=1.5cm]{subtitle}
+  \begin{beamercolorbox}[leftskip=\beamer@titlepageLeft]{subtitle}
     \usebeamerfont{subtitle}\insertsubtitle%
   \end{beamercolorbox}
-  \vfill
-  \begin{beamercolorbox}[leftskip=1.5cm]{author}
+  \vskip 0.25cm%
+  \vfill%
+  \begin{beamercolorbox}[leftskip=\beamer@titlepageLeft]{author}
     \usebeamerfont{author}\insertauthor%
   \end{beamercolorbox}
-  \begin{beamercolorbox}[leftskip=1.5cm]{date}
+  \begin{beamercolorbox}[leftskip=\beamer@titlepageLeft]{date}
     \usebeamerfont{date}\insertdate%
   \end{beamercolorbox}
-  \vskip -0.5cm%
 }
 
 % frametitle
