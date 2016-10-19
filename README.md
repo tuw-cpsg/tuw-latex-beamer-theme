@@ -68,6 +68,10 @@ You can use [demo.tex](tuw/demo.tex) as a starting point for your presentation.
 * `tuw_whitelogo`: Specify this boolean option if your background image is dark
   or the blue logo simply does not fit.
 
+### Colors
+
+Several colors and nuances are defined in the theme, e.g., `\tuwBlue`,
+`\tuwGray` and `\alertred`. Check out `beamerthemetuw.sty` for definitions.
 
 ## Credits
 

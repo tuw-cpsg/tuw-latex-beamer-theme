@@ -1,10 +1,9 @@
 THEME := tuw
 DEMO := demo
 
-SHELL := /bin/bash
 PDFLATEX := pdflatex -interaction=nonstopmode -halt-on-error
 
-.PHONY: all clean demo
+.PHONY: all clean demo install
 
 all: install
 
