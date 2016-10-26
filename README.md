@@ -45,7 +45,8 @@ Tested outer themes:
     \usetheme{tuw}
     \usetheme[outer=sidebar]{tuw}
 
-You can use [demo.tex](tuw/demo.tex) as a starting point for your presentation.
+You can use [demo.tex](demo/demo.tex) as a starting point for your
+presentation.
 
 ### Options
 
