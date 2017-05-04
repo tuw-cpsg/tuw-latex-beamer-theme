@@ -21,13 +21,15 @@
 %\usepackage{lmodern}
 \usepackage[utf8]{inputenc}
 \usepackage{listings}
+\usepackage{booktabs}
 \usepackage{url}
 
 %%% title page settings
 \title[TUW Theme Demo]{%
   TU Wien Theme Demo
 }
-\subtitle{This demo presentation shows and tests the TU Wien LaTeX beamer theme.}
+\subtitle{This demo presentation shows and tests the TU Wien LaTeX beamer
+  theme.}
 \author{OSUE-Team 2016}
 \date{\today}
 
@@ -55,24 +57,29 @@
   \tableofcontents
 \end{frame}
 
-\section{Text}
+\section{Elements}
 
 \subsection[Paragraphs]{Simple Paragraphs}
-\begin{frame}
+\begin{frame}[fragile]
   \frametitle{Title first category}
   \framesubtitle{Title second category}
   % no deeper title hierarchy provided
 
-  Pellentesque \emph{emphasized words} facilisis, elit ac egestas gravida, ante
-  leo euismod velit, et suscipit est ex ut ex.
-
-  This is an url: \url{http://www.google.com/}
-
   Donec suscipit luctus lacus ut viverra. Proin molestie eros tellus, vitae
   elementum nulla fringilla nec. Pellentesque facilisis, elit ac egestas
-  gravida, ante leo euismod velit, et suscipit est ex ut ex. Sed tellus diam,
-  tempus non orci posuere, fringilla rhoncus purus. Praesent nulla metus,
-  pretium at metus sit amet, viverra.
+  gravida, ante leo euismod velit, et suscipit est ex ut ex.
+
+  You can cite~\cite{Tan11}. Urls look like this: \url{http://www.google.com/}.
+\end{frame}
+
+\begin{frame}[fragile]{Emphasize}
+  \begin{lstlisting}
+This sentence includes \emph{emphasized}
+and \alert{alerted} words.
+  \end{lstlisting}
+  becomes:
+
+  This sentence includes \emph{emphasized} and \alert{alerted} words.
 \end{frame}
 
 \subsection{Blocks}
@@ -101,7 +108,7 @@
 \end{frame}
 
 \subsection{Lists}
-\begin{frame}{Lists}{itemize, description, enumerate}
+\begin{frame}{Lists}{itemize, enumerate, description}
   \begin{itemize}
   \item Sed semper egestas libero vitae tempus.
     \begin{itemize}
@@ -123,6 +130,32 @@
   \end{description}
 \end{frame}
 
+\begin{frame}{Figures}{}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{TU_Logo}
+    \caption{Exemplary figure (\texttt{TU\_Logo.pdf}).}
+    \label{fig:test}
+  \end{figure}
+\end{frame}
+
+\begin{frame}{Tables}{}
+  \begin{table}
+    \centering
+    \begin{tabular}{lcr}
+      \toprule
+      Column 1 & Column 2 & Column 3 \\
+      \midrule
+      Some Data & a & 1234 \\
+      Some More & b & 1331 \\
+      Here We Go & ab & 12 \\
+      \bottomrule
+    \end{tabular}
+    \caption{Exemplary table.}
+    \label{tbl:example}
+  \end{table}
+\end{frame}
+
 \section{Special}
 
 \subsection{Columns}
@@ -141,7 +174,7 @@
 \end{frame}
 
 \subsection{Code}
-\begin{frame}[fragile=singleslide]{Code}
+\begin{frame}[fragile]{Code}
    \begin{lstlisting}[basicstyle=\ttfamily]
 #include <stdio.h>
 
@@ -152,6 +185,9 @@ int main(void)
   return 0;
 }
    \end{lstlisting}
+
+   Note: Don't forget to mark the frames using listings with
+   \lstinline[columns=fixed]{[fragile]}.
 \end{frame}
 
 \section{References}
@@ -159,8 +195,8 @@ int main(void)
   You can add references like in a LaTeX article.
 
   \begin{thebibliography}{10}
-  \bibitem{Goldbach1742}[1] T. Tantau, J. Wright and V. Miletić: The Beamer
-    class - User Guide for version 3.36, 2011, available online:
+  \bibitem{Tan11}[1] T. Tantau, J. Wright and V. Miletić: The Beamer class -
+    User Guide for version 3.36, 2011, available online:
     \url{http://texdoc.net/texmf-dist/doc/latex/beamer/doc/beameruserguide.pdf}.
   \end{thebibliography}
 \end{frame}
