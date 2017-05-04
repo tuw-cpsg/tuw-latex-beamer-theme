@@ -35,7 +35,8 @@
 \newif\ifbeamer@tuwWhiteLogo
 \DeclareOptionBeamer{tuw_whitelogo}{\beamer@tuwWhiteLogotrue}
 % Print frame title beside the logo to save space.
-%% TODO
+\newif\ifbeamer@tuwFrametitleToTop
+\DeclareOptionBeamer{tuw_frametitletotop}{\beamer@tuwFrametitleToToptrue}
 
 % defaults
 \ExecuteOptionsBeamer{outer=plain}
@@ -44,6 +45,7 @@
 \beamer@tuwBackgroundfalse
 \ExecuteOptionsBeamer{tuw_image=none}
 \beamer@tuwWhiteLogofalse
+\beamer@tuwFrametitleToTopfalse
 
 \ProcessOptionsBeamer
 
@@ -223,10 +225,19 @@
 % frametitle
 \setbeamertemplate{frametitle}
 {%
-  \vskip 1.2cm%
+  \ifbeamer@tuwFrametitleToTop % frametitle should be printed beside the logo
+  % vbox to keep the baseline
+  \vbox{}\vskip -0.43cm%
+  \else
+  \vbox{}\vskip 0.7cm%
+  \fi
   \begin{beamercolorbox}[leftskip=0cm]{frametitle}
     \usebeamerfont{frametitle}\insertframetitle%
-    \vskip 0.2cm%
+    \ifbeamer@tuwFrametitleToTop
+    \vbox{}\vskip 0.3cm%
+    \else
+    \vbox{}\vskip 0.2cm%
+    \fi
     \usebeamerfont{framesubtitle}\insertframesubtitle%
   \end{beamercolorbox}
 }
@@ -280,7 +291,7 @@
 \setbeamercovered{invisible}
 
 % emphasize
-\renewcommand<>{\emph}[1]{{\only#2{\color{tuwBlue}}#1}}
+\renewcommand<>{\emph}[1]{{\only#2{\color{\tuwBlue}}#1}}
 
 \hypersetup{colorlinks=true,linkcolor=fg,citecolor=\tuwGray,urlcolor=\tuwGray}
 
