@@ -10,3 +10,6 @@
 *.pdf
 *.snm
 *.toc
+*.bbl
+*.blg
+*.vrb
