@@ -13,3 +13,6 @@
 *.bbl
 *.blg
 *.vrb
+
+# Sample image
+demo/demo.png
