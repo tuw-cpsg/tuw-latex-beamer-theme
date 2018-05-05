@@ -17,7 +17,7 @@ install: install_theme
 
 # copies theme files to personal latex path
 install_theme:
-	./install_theme.sh
+	./install.sh
 
 %.clean:
 	rm -f $*.{aux,nav,log,out,pdf,snm,toc} $**~
