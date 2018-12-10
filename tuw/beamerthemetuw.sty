@@ -246,19 +246,23 @@
 
 % footline
 \setbeamertemplate{footline}{%
-  \ifnum\thepage>1
-  \vspace{-1cm}
-  \begin{beamercolorbox}{footline}
-    \hskip 1.2cm%
-    \usebeamerfont{footline}\insertshortdate%
-    \hfill%
-    \insertshorttitle, \insertshortauthor%
-    \hfill%
-    \insertframenumber\:/\:\inserttotalframenumber%
-    \hspace*{1.5cm}%
-  \end{beamercolorbox}
   \vspace{0.1cm}
+  \ifnum\thepage>1
+    \begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex,dp=1ex]{footline}
+      \hskip 1.2cm%
+      \usebeamerfont{footline}\insertshortdate%
+      \hfill%
+      \insertshorttitle, \insertshortauthor%
+      \hfill%
+      \insertframenumber\:/\:\inserttotalframenumber%
+      \hspace*{1.5cm}%
+    \end{beamercolorbox}
+  \else
+    \begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex,dp=1ex,center]{}%
+        % empty environment to raise height
+    \end{beamercolorbox}
   \fi
+  \vspace{0.1cm}
 }
 
 \else\ifx\beamer@tuwOuter\beamer@tuwSidebar
