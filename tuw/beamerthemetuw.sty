@@ -12,6 +12,7 @@
 \RequirePackage{graphicx}
 \RequirePackage{tikz}
 
+\def\beamer@tuwDefault{default}
 \def\beamer@tuwPlain{plain}
 \def\beamer@tuwSidebar{sidebar}
 \def\beamer@tuwHelvetica{helvetica}
@@ -39,7 +40,7 @@
 \DeclareOptionBeamer{tuw_frametitletotop}{\beamer@tuwFrametitleToToptrue}
 
 % defaults
-\ExecuteOptionsBeamer{outer=plain}
+\ExecuteOptionsBeamer{outer=default}
 \ExecuteOptionsBeamer{width=1.6cm}
 \ExecuteOptionsBeamer{font=\familydefault}
 \beamer@tuwBackgroundfalse
@@ -95,9 +96,9 @@
 \setbeamercolor{page number in head/foot}{fg=\tuwBlue}
 \setbeamercolor{footline}{fg=\tuwBlue}
 
-% color difference of plain and other outer styles
-\ifx\beamer@tuwOuter\beamer@tuwPlain
-% plain style - this is the CD of TU Wien
+% color difference of default and other outer styles
+\ifx\beamer@tuwOuter\beamer@tuwDefault
+% default style - this is the CD of TU Wien
 % title page
 \setbeamercolor{title}{fg=white}
 \setbeamercolor{subtitle}{fg=white}
@@ -142,9 +143,9 @@
 \setbeamerfont{headline}{series=\mdseries}
 \setbeamerfont{footline}{series=\mdseries}
 
-% font size difference of plain and other outer styles
-\ifx\beamer@tuwOuter\beamer@tuwPlain
-% plain style - this is the CD of TU Wien
+% font size difference of default and other outer styles
+\ifx\beamer@tuwOuter\beamer@tuwDefault
+% default style - this is the CD of TU Wien
 \setbeamerfont{title}{size=\huge}
 \setbeamerfont{author}{size=\normalsize}
 \setbeamerfont{institute}{size=\normalsize}
@@ -171,8 +172,9 @@
 \setbeamersize{text margin right=1.5cm}
 \beamertemplatenavigationsymbolsempty
 
-\ifx\beamer@tuwOuter\beamer@tuwPlain
-% plain outher theme - this is the CD of TU Wien
+
+\ifx\beamer@tuwOuter\beamer@tuwDefault
+% default outher theme - this is the CD of TU Wien
 
 % background
 \setbeamertemplate{background}{
@@ -261,9 +263,9 @@
 
 \else\ifx\beamer@tuwOuter\beamer@tuwSidebar
 % sidebar outer theme
+\useoutertheme[width=\beamer@tuwWidth,height=0pt]{\beamer@tuwOuter}
 
 % footline
-\useoutertheme[width=\beamer@tuwWidth,height=0pt]{\beamer@tuwOuter}
 \setbeamertemplate{footline}{
   \ifnum\thepage>1
   \vspace{-1cm}
@@ -273,14 +275,15 @@
 }
 \else
 \useoutertheme{\beamer@tuwOuter}
-\fi\fi % if outer=plain or if outer=sidebar
+\fi\fi % if outer=default or outer=sidebar
+
 
 %%% inner
-\ifx\beamer@tuwOuter\beamer@tuwPlain
+\ifx\beamer@tuwOuter\beamer@tuwDefault
 \setbeamertemplate{itemize items}[circle]
 \else
 % defaults
-\fi % if outer=plain
+\fi % if outer=default
 
 \setlength{\parskip}{6pt}
 

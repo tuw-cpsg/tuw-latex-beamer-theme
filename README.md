@@ -36,7 +36,7 @@ The beamer theme is accessible via
 
     \usetheme{tuw}
 
-The beamer theme supports the default outer style "plain", i.e., no sidebar and
+The beamer theme supports the default outer style, i.e., no sidebar and
 simple footer. All other beamer outer themes are also available, although the
 color scheme may not fit to the CD of TU Wien for all themes.
 
@@ -51,7 +51,7 @@ presentation.
 ### Options
 
 * `outer`: The outer theme of the presentation (e.g., `outer=sidebar`), default
-  is `plain` that corresponds to the CD of TU Wien.
+  is `default` that corresponds to the CD of TU Wien.
 
 * `font`: TU Wien suggests to use helvetica (e.g., `font=helvetica`), default
   is the Latex default family.
